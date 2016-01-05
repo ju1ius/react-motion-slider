@@ -16,7 +16,14 @@ var config = {
   },
   module: {
     loaders: [
-      {test: /\.(js|jsx)/, loader: 'babel?stage=0'}
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+          presets: ['react', 'es2015-loose', 'stage-1']
+        }
+      }
     ]
   },
   plugins: [],
