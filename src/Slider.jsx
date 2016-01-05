@@ -5,6 +5,7 @@ import Slide from './Slide'
 import getIndexFromKey from './get-index-from-key'
 import modulo from './modulo'
 
+
 // touch / swipe
 // http://codepen.io/barTsoury/post/optimization-of-swipe-gesture-on-list-items
 // https://github.com/kenwheeler/nuka-carousel/blob/master/src/carousel.js#L162
@@ -59,7 +60,7 @@ export default class Slider extends Component {
     const { current, speed } = this.state
     const newIndex = isInteger(index) ? index : modulo(current + direction, this.props.children.length)
     const outgoingPos = outgoing.indexOf(newIndex)
-    
+
     // if new index exists in outgoing, remove it
     if (outgoingPos > -1) {
       outgoing.splice(outgoingPos, 1)
@@ -91,13 +92,11 @@ export default class Slider extends Component {
     }
   }
 
-  render() {
-    const { component, children, vertical } = this.props
+  _getChildrenToRender(currValue, destValue, instant) {
+    const { children, vertical } = this.props
     const { current, outgoing, speed, direction } = this.state
-    const destValue = (speed * 100)
-    const instant = (speed === 0)
 
-    const childrenToRender = (currValue, destValue, instant) => Children.map(children, (child, index) => {
+    return Children.map(children, (child, index) => {
       const position = outgoing.indexOf(index)
       const isCurrent = (current === index)
       const isOutgoing = (position > -1)
@@ -122,6 +121,13 @@ export default class Slider extends Component {
         child
       )
     })
+  }
+
+  render() {
+    const { component, className, motionConfig } = this.props
+    const { speed } = this.state
+    const destValue = (speed * 100)
+    const instant = (speed === 0)
 
     return createElement(
       Motion,
@@ -135,10 +141,9 @@ export default class Slider extends Component {
         {
           className
         },
-        childrenToRender(currValue, destValue, instant)
+        this._getChildrenToRender(currValue, destValue, instant)
       )
     )
   }
 }
 
-export default Slider
