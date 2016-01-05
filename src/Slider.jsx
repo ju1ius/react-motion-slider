@@ -19,7 +19,7 @@ export default class Slider extends Component {
     vertical: PropTypes.bool,
     onChange: PropTypes.func,
     className: PropTypes.string,
-    motionConfig: PropTypes.arrayOf(PropTypes.number)
+    slideConfig: PropTypes.arrayOf(PropTypes.number)
   }
 
   static defaultProps = {
@@ -27,7 +27,7 @@ export default class Slider extends Component {
     vertical: false,
     onChange: () => {},
     className: 'slider',
-    motionConfig: presets.stiff
+    slideConfig: presets.stiff
   }
 
   state = {
@@ -124,7 +124,7 @@ export default class Slider extends Component {
   }
 
   render() {
-    const { component, className, motionConfig } = this.props
+    const { component, className, slideConfig } = this.props
     const { speed } = this.state
     const destValue = (speed * 100)
     const instant = (speed === 0)
@@ -133,7 +133,7 @@ export default class Slider extends Component {
       Motion,
       {
         style: {
-          currValue: instant ? destValue : spring(destValue, motionConfig)
+          currValue: instant ? destValue : spring(destValue, slideConfig)
         }
       },
       ({currValue}) => createElement(
