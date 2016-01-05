@@ -1,5 +1,4 @@
 import React, { Component, PropTypes, Children, cloneElement, createElement } from 'react'
-import ReactDOM from 'react-dom'
 import { Motion, spring, presets } from 'react-motion'
 import isInteger from 'is-integer'
 import Slide from './Slide'
@@ -10,19 +9,24 @@ import modulo from './modulo'
 // http://codepen.io/barTsoury/post/optimization-of-swipe-gesture-on-list-items
 // https://github.com/kenwheeler/nuka-carousel/blob/master/src/carousel.js#L162
 
-class Slider extends Component {
+export default class Slider extends Component {
+
   static propTypes = {
     component: PropTypes.string,
     currentKey: PropTypes.any,
     currentIndex: PropTypes.number,
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
     onChange: PropTypes.func,
+    className: PropTypes.string,
+    motionConfig: PropTypes.arrayOf(PropTypes.number)
   }
 
   static defaultProps = {
     component: 'div',
-    vertical: false
+    vertical: false,
     onChange: () => {},
+    className: 'slider',
+    motionConfig: presets.stiff
   }
 
   state = {
@@ -121,14 +125,13 @@ class Slider extends Component {
       Motion,
       {
         style: {
-          //currValue: instant ? destValue : spring(destValue, [9, 5])
-          currValue: instant ? destValue : spring(destValue)
+          currValue: instant ? destValue : spring(destValue, motionConfig)
         }
       },
       ({currValue}) => createElement(
         component,
         {
-          className: 'slider'
+          className
         },
         childrenToRender(currValue, destValue, instant)
       )
