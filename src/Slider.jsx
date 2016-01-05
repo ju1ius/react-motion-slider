@@ -16,11 +16,13 @@ class Slider extends Component {
     currentKey: PropTypes.any,
     currentIndex: PropTypes.number,
     vertical: PropTypes.bool
+    onChange: PropTypes.func,
   }
 
   static defaultProps = {
     component: 'div',
     vertical: false
+    onChange: () => {},
   }
 
   state = {
@@ -74,9 +76,13 @@ class Slider extends Component {
     )
   }
 
-  _handleSlideEnd = () => {
+  _handleSlideEnd = slideIndex => {
     if (this.state.outgoing.length > 0) {
       this.setState({outgoing: [], speed: 0})
+    } else {
+      const {current} = this.state
+      const {children, onChange} = this.props
+      onChange(children[current].key, current)
     }
   }
 

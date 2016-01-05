@@ -12,11 +12,10 @@ class Slide extends Component {
   }
 
   componentDidUpdate(lastProps) {
-    const { index, isCurrent, hasEnded } = this.props
+    const { index, isCurrent, hasEnded, onSlideEnd } = this.props
 
-    if (isCurrent && lastProps.hasEnded !== hasEnded &&
-        hasEnded === true) {
-      this.props.onSlideEnd(index)
+    if (isCurrent && lastProps.hasEnded !== hasEnded && hasEnded === true) {
+      onSlideEnd(index)
     }
   }
 
