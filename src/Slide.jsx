@@ -5,7 +5,10 @@ const TRANSFORM = require('get-prefix')('transform')
 
 class Slide extends Component {
   shouldComponentUpdate(nextProps) {
-    return !nextProps.instant
+    if (nextProps.instant && !this.props.instant) {
+      return false
+    }
+    return true
   }
 
   componentDidUpdate(lastProps) {
