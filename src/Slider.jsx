@@ -24,7 +24,7 @@ class Slider extends Component {
   }
 
   state = {
-    current: this._getNextIndex(this.props),
+    current: this._getNextIndex(this.props) || 0,
     outgoing: [],
     speed: 0
   }
@@ -69,8 +69,8 @@ class Slider extends Component {
   _getNextIndex({currentIndex, currentKey, children}) {
     return (
       currentKey ?
-      getIndexFromKey(currentKey, children) :
-      (currentIndex || 0)
+        getIndexFromKey(currentKey, children) :
+        isInteger(currentIndex) ? currentIndex : null
     )
   }
 
