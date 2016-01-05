@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement, createElement } from 'react'
+import React, { Component, PropTypes, Children, cloneElement } from 'react'
 
 
 const TRANSFORM = require('get-prefix')('transform')

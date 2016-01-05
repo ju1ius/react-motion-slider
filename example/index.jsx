@@ -5,9 +5,9 @@ import connectToStores from 'alt/utils/connectToStores'
 import Collapse from 'react-collapse'
 import Slider from '../src/react-motion-slider'
 
-import './main.scss';
+import './main.scss'
 
-const alt = new Alt();
+const alt = new Alt()
 
 class RouterActions {
   moveTo(route) {
@@ -15,7 +15,7 @@ class RouterActions {
   }
 }
 
-const routerActions = alt.createActions(RouterActions);
+const routerActions = alt.createActions(RouterActions)
 
 class RouterStore {
   constructor() {
@@ -29,7 +29,7 @@ class RouterStore {
   }
 }
 
-const routerStore = alt.createStore(RouterStore);
+const routerStore = alt.createStore(RouterStore)
 
 class HeightActions {
   updateHeight(bool) {
@@ -37,7 +37,7 @@ class HeightActions {
   }
 }
 
-const heightActions = alt.createActions(HeightActions);
+const heightActions = alt.createActions(HeightActions)
 
 class HeightStore {
   constructor() {
@@ -51,7 +51,7 @@ class HeightStore {
   }
 }
 
-const heightStore = alt.createStore(HeightStore);
+const heightStore = alt.createStore(HeightStore)
 
 class One extends Component {
   render() {
@@ -96,11 +96,11 @@ class Two extends Component {
 
 class Three extends Component {
   prev() {
-    this.refs['slider'].prev();
+    this.refs['slider'].prev()
   }
 
   next() {
-    this.refs['slider'].next();
+    this.refs['slider'].next()
   }
 
   render() {
@@ -179,12 +179,13 @@ class App extends Component {
   }
 
   _handleChange(key, index) {
+    console.log(key, index)
   }
 
   _handleHeightUpdate = () => {
     this.refs['slider'].setHeight()
   }
-  
+
   render() {
     const { slides } = this.state
 
@@ -205,7 +206,7 @@ class App extends Component {
             onChange={this._handleChange}
           >
             {
-              this.state.slides.map((InnerView, i) => 
+              this.state.slides.map((InnerView, i) =>
                 <View key={`slide-${i}`} index={i}>
                   <InnerView
                     isCurrentSlide={this.props.currentRoute === `slide-${i}`}
@@ -228,7 +229,7 @@ class App extends Component {
           )}
         </nav>
       </div>
-    );
+    )
   }
 }
 

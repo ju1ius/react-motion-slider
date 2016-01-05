@@ -1,4 +1,4 @@
-import React, { Component, PropTypes, Children, cloneElement, createElement } from 'react'
+import React, { Component, PropTypes, Children, createElement } from 'react'
 import { Motion, spring, presets } from 'react-motion'
 import isInteger from 'is-integer'
 import Slide from './Slide'

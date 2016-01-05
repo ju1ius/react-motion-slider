@@ -54,5 +54,28 @@
     "style-loader": "^0.12.3",
     "webpack": "^1.9.12",
     "webpack-dev-server": "^1.9.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "babel-eslint",
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "strict": 0,
+      "indent": [2, 2],
+      "quotes": [2, "single", "avoid-escape"],
+      "linebreak-style": [2, "unix"],
+      "semi": [2, "never"],
+      "no-multi-spaces": 2,
+      "space-before-function-paren": [2, "never"]
+    }
   }
 }
