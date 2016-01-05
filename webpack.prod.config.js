@@ -4,7 +4,7 @@ var TARGET = process.env.TARGET || null
 
 var config = {
   entry: {
-    index: './src/react-motion-slider.js',
+    index: './src/react-motion-slider.js'
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -34,7 +34,7 @@ var config = {
     'react': 'React',
     'react-dom': 'ReactDOM',
     'react-motion': 'ReactMotion'
-  },
+  }
 }
 
 if(TARGET === 'minify') {
@@ -51,3 +51,4 @@ if(TARGET === 'minify') {
 }
 
 module.exports = config
+
