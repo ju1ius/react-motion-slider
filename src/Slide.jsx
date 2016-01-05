@@ -1,9 +1,28 @@
 import React, { Component, PropTypes, Children, cloneElement, createElement } from 'react'
-import ReactDOM from 'react-dom'
+
 
 const TRANSFORM = require('get-prefix')('transform')
 
-class Slide extends Component {
+
+export default class Slide extends Component {
+
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    index: PropTypes.number.isRequired,
+    speed: PropTypes.number.isRequired,
+    direction: PropTypes.number.isRequired,
+    vertical: PropTypes.bool.isRequired,
+    position: PropTypes.number.isRequired,
+    outgoing: PropTypes.array.isRequired,
+    isCurrent: PropTypes.bool.isRequired,
+    isOutgoing: PropTypes.bool.isRequired,
+    currValue: PropTypes.number.isRequired,
+    destValue: PropTypes.number.isRequired,
+    hasEnded: PropTypes.bool.isRequired,
+    instant: PropTypes.bool.isRequired,
+    onSlideEnd: PropTypes.func.isRequired
+  }
+
   shouldComponentUpdate(nextProps) {
     if (nextProps.instant && !this.props.instant) {
       return false
@@ -46,4 +65,3 @@ class Slide extends Component {
   }
 }
 
-export default Slide

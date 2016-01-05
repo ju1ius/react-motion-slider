@@ -32,7 +32,8 @@ export default class Slider extends Component {
   state = {
     current: this._getNextIndex(this.props) || 0,
     outgoing: [],
-    speed: 0
+    speed: 0,
+    direction: 1
   }
 
   componentWillReceiveProps(nextProps) {
@@ -104,6 +105,7 @@ export default class Slider extends Component {
       return (isCurrent || isOutgoing) && createElement(
         Slide,
         {
+          index,
           position,
           speed,
           direction,
