@@ -68,7 +68,7 @@ export default class Slider extends Component {
 
     this.setState({
       current: newIndex,
-      outgoing: outgoing.concat([current]),
+      outgoing: [...outgoing, current],
       speed: speed + 1,
       direction
     })

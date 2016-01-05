@@ -1,5 +1,5 @@
-var path = require('path');
-var nodeModulesDir = path.resolve(__dirname, 'node_modules');
+var path = require('path')
+var nodeModulesDir = path.resolve(__dirname, 'node_modules')
 
 module.exports = {
   entry: {
@@ -11,14 +11,24 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.(js|jsx)/, exclude: /node_modules/, loader: 'babel?stage=0'},
-      {test: /\.scss$/, loader: 'style!css!autoprefixer!sass?sourceMap'}
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel',
+        query: {
+            presets: ['react', 'es2015-loose', 'stage-1']
+          }
+      },
+      {
+        test: /\.scss$/,
+        loader: 'style!css!autoprefixer!sass?sourceMap'
+      }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
   devServer: {
-    contentBase: './example',
+    contentBase: './example'
   }
-};
+}
