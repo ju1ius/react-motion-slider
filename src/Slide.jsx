@@ -21,7 +21,7 @@ export default class Slide extends Component {
     hasEnded: PropTypes.bool.isRequired,
     instant: PropTypes.bool.isRequired,
     onSlideEnd: PropTypes.func.isRequired
-  }
+  };
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.instant && !this.props.instant) {

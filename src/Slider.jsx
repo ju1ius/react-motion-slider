@@ -20,7 +20,7 @@ export default class Slider extends Component {
     onChange: PropTypes.func,
     className: PropTypes.string,
     slideConfig: PropTypes.arrayOf(PropTypes.number)
-  }
+  };
 
   static defaultProps = {
     component: 'div',
@@ -28,14 +28,14 @@ export default class Slider extends Component {
     onChange: () => {},
     className: 'slider',
     slideConfig: presets.stiff
-  }
+  };
 
   state = {
     current: this._getNextIndex(this.props) || 0,
     outgoing: [],
     speed: 0,
     direction: 1
-  }
+  };
 
   componentWillReceiveProps(nextProps) {
     const { current } = this.state
@@ -90,7 +90,7 @@ export default class Slider extends Component {
       const {children, onChange} = this.props
       onChange(children[current].key, current)
     }
-  }
+  };
 
   _getChildrenToRender(currValue, destValue, instant) {
     const { children, vertical } = this.props
