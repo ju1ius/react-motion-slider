@@ -19,7 +19,11 @@ export default class Slider extends Component {
     vertical: PropTypes.bool,
     onChange: PropTypes.func,
     className: PropTypes.string,
-    slideConfig: PropTypes.arrayOf(PropTypes.number)
+    slideConfig: PropTypes.shape({
+      stiffness: PropTypes.number,
+      damping: PropTypes.number,
+      precision: PropTypes.number
+    })
   };
 
   static defaultProps = {
