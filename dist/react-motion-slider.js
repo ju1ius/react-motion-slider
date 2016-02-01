@@ -73,7 +73,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _class, _temp2;
+
 	exports.__esModule = true;
+	exports.default = undefined;
 
 	var _react = __webpack_require__(2);
 
@@ -109,7 +112,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// http://codepen.io/barTsoury/post/optimization-of-swipe-gesture-on-list-items
 	// https://github.com/kenwheeler/nuka-carousel/blob/master/src/carousel.js#L162
 
-	var Slider = (function (_Component) {
+	var Slider = (_temp2 = _class = function (_Component) {
 	  _inherits(Slider, _Component);
 
 	  function Slider() {
@@ -230,7 +233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var _props2 = this.props;
 	    var component = _props2.component;
 	    var className = _props2.className;
-	    var motionConfig = _props2.motionConfig;
+	    var slideConfig = _props2.slideConfig;
 	    var speed = this.state.speed;
 
 	    var destValue = speed * 100;
@@ -238,7 +241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return (0, _react.createElement)(_reactMotion.Motion, {
 	      style: {
-	        currValue: instant ? destValue : (0, _reactMotion.spring)(destValue, motionConfig)
+	        currValue: instant ? destValue : (0, _reactMotion.spring)(destValue, slideConfig)
 	      }
 	    }, function (_ref2) {
 	      var currValue = _ref2.currValue;
@@ -249,24 +252,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  return Slider;
-	})(_react.Component);
-
-	Slider.propTypes = {
+	}(_react.Component), _class.propTypes = {
 	  component: _react.PropTypes.string,
 	  currentKey: _react.PropTypes.any,
 	  currentIndex: _react.PropTypes.number,
 	  vertical: _react.PropTypes.bool,
 	  onChange: _react.PropTypes.func,
 	  className: _react.PropTypes.string,
-	  motionConfig: _react.PropTypes.arrayOf(_react.PropTypes.number)
-	};
-	Slider.defaultProps = {
+	  slideConfig: _react.PropTypes.shape({
+	    stiffness: _react.PropTypes.number,
+	    damping: _react.PropTypes.number,
+	    precision: _react.PropTypes.number
+	  })
+	}, _class.defaultProps = {
 	  component: 'div',
 	  vertical: false,
 	  onChange: function onChange() {},
 	  className: 'slider',
-	  motionConfig: _reactMotion.presets.stiff
-	};
+	  slideConfig: _reactMotion.presets.stiff
+	}, _temp2);
 	exports.default = Slider;
 
 /***/ },
@@ -323,7 +327,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	var _class, _temp;
+
 	exports.__esModule = true;
+	exports.default = undefined;
 
 	var _react = __webpack_require__(2);
 
@@ -339,7 +346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var TRANSFORM = __webpack_require__(8)('transform');
 
-	var Slide = (function (_Component) {
+	var Slide = (_temp = _class = function (_Component) {
 	  _inherits(Slide, _Component);
 
 	  function Slide() {
@@ -407,9 +414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  return Slide;
-	})(_react.Component);
-
-	Slide.propTypes = {
+	}(_react.Component), _class.propTypes = {
 	  children: _react.PropTypes.element.isRequired,
 	  index: _react.PropTypes.number.isRequired,
 	  speed: _react.PropTypes.number.isRequired,
@@ -424,7 +429,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  hasEnded: _react.PropTypes.bool.isRequired,
 	  instant: _react.PropTypes.bool.isRequired,
 	  onSlideEnd: _react.PropTypes.func.isRequired
-	};
+	}, _temp);
 	exports.default = Slide;
 
 /***/ },

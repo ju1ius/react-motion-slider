@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ReactDOM from 'react-dom'
 import Alt from 'alt'
 import connectToStores from 'alt/utils/connectToStores'
-import Collapse from 'react-collapse'
+//import Collapse from 'react-collapse'
 import Slider from '../src/react-motion-slider'
 
 import './main.scss'
@@ -22,11 +22,11 @@ class RouterStore {
     const { moveTo } = routerActions
     this.bindListeners({moveTo})
   }
-  currentRoute = 'slide-0'
+  currentRoute = 'slide-0';
 
   moveTo = (route) => {
     this.currentRoute = route
-  }
+  };
 }
 
 const routerStore = alt.createStore(RouterStore)
@@ -44,11 +44,11 @@ class HeightStore {
     const { updateHeight } = heightActions
     this.bindListeners({updateHeight})
   }
-  shouldUpdateHeight = false
+  shouldUpdateHeight = false;
 
   updateHeight = (bool) => {
     this.shouldUpdateHeight = bool
-  }
+  };
 }
 
 const heightStore = alt.createStore(HeightStore)
@@ -71,7 +71,7 @@ class One extends Component {
 class Two extends Component {
   state = {
     toggle: true
-  }
+  };
 
   render() {
     const { isCurrentSlide } = this.props
@@ -84,11 +84,11 @@ class Two extends Component {
         >
           Toggle
         </button>
-        <Collapse isOpened={toggle}>
+        {/*<Collapse isOpened={toggle}>
           <div>
             <h1 style={{margin: 0}}>Component 2</h1>
           </div>
-        </Collapse>
+        </Collapse>*/}
       </div>
     )
   }
@@ -154,7 +154,7 @@ class View extends Component {
 class App extends Component {
   state = {
     slides: [One, Two, Three]
-  }
+  };
 
   static getStores() {
     return [routerStore, heightStore]
@@ -172,11 +172,11 @@ class App extends Component {
 
   prev = () => {
     this.refs['slider'].prev()
-  }
+  };
 
   next = () => {
     this.refs['slider'].next()
-  }
+  };
 
   _handleChange(key, index) {
     console.log(key, index)
@@ -184,7 +184,7 @@ class App extends Component {
 
   _handleHeightUpdate = () => {
     this.refs['slider'].setHeight()
-  }
+  };
 
   render() {
     const { slides } = this.state
